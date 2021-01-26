@@ -191,7 +191,6 @@ const addTeamates = () => {
       },
     ])
     .then((res) => {
-      //if statements to  check answers from prompt
       if (res.whoToAdd === "Engineer") {
         addEngineer();
       } else if (res.whoToAdd === "Intern") {
