@@ -61,25 +61,144 @@ const addManager = () => {
     .then((res) => {
       const manager = new Manager(
         res.name,
-        res.email,
         res.id,
+        res.email,
         res.officeNumber
       );
       teamMates.push(manager);
       addTeamates();
     });
 };
-addManager();
+const addIntern = () => {
+  inquirer
+    .prompt([
+      {
+        name: "name",
+        type: "input",
+        message: "What is the new Interns name?",
+        validate: (name) => {
+          if (name) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+      {
+        name: "email",
+        type: "input",
+        message: "What is their email",
+        validate: (email) => {
+          if (email) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+      {
+        name: "id",
+        type: "input",
+        message: "What is the new Interns id?",
+        validate: (id) => {
+          if (id) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+      {
+        name: "internsSchool",
+        type: "input",
+        message: "What is the new Interns school?",
+        validate: (internsSchool) => {
+          if (internsSchool) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+    ])
+    .then((res) => {
+      const intern = new Intern(res.name, res.id, res.email, res.internsSchool);
+      teamMates.push(intern);
+      addTeamates();
+    });
+};
+const addEngineer = () => {
+  inquirer
+    .prompt([
+      {
+        name: "name",
+        type: "input",
+        message: "What is the new Engineer name?",
+        validate: (name) => {
+          if (name) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+      {
+        name: "email",
+        type: "input",
+        message: "What is their email",
+        validate: (email) => {
+          if (email) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+      {
+        name: "id",
+        type: "input",
+        message: "What is the new Engineer id?",
+        validate: (id) => {
+          if (id) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+      {
+        name: "github",
+        type: "input",
+        message: "What is the github username?",
+        validate: (engineersGithub) => {
+          if (engineersGithub) {
+            return true;
+          }
+          return "ERROR PLEASE INSTERT CHARACTER";
+        },
+      },
+    ])
+    .then((res) => {
+      const engineer = new Engineer(res.name, res.id, res.email, res.github);
+      teamMates.push(engineer);
+      addTeamates();
+    });
+};
+const createHtml = () => {
+  console.log(teamMates);
+};
 const addTeamates = () => {
   inquirer
     .prompt([
       {
-        name: "choice",
-        type: "input",
-        massage: "Who Do you want to add?",
+        type: "list",
+        name: "whoToAdd",
+        message: "Who Do you want to add?",
         choices: ["Engineer", "Intern", "Quit?"],
       },
     ])
-    .then((res) => {});
-  //if statements to  check answers from prompt
+    .then((res) => {
+      //if statements to  check answers from prompt
+      if (res.whoToAdd === "Engineer") {
+        addEngineer();
+      } else if (res.whoToAdd === "Intern") {
+        addIntern();
+      } else {
+        createHtml();
+      }
+    });
 };
+addManager();
