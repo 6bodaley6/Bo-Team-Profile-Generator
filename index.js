@@ -4,8 +4,8 @@ const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
-const outputFolder = path.resolve(__dirname, "output");
+const htmlRender = require("./lib/htmlRender")
+const outputFolder = path.join(__dirname, "output");
 const outputFile = path.join(outputFolder, "team.html");
 
 const teamMates = [];
@@ -179,7 +179,9 @@ const addEngineer = () => {
 };
 const createHtml = () => {
   console.log(teamMates);
+  fs.writeFileSync(outputFile, htmlRender(teamMates), "UTF-8")
 };
+
 const addTeamates = () => {
   inquirer
     .prompt([
