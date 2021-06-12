@@ -23,9 +23,9 @@ https://drive.google.com/file/d/1QbPlFVmwn_WS36bdOMmN1p6c2gMB2E_h/view?usp=shari
 
 <br></br>
 ## Contributing
-no
+Any feedback!
 ## Tests
-4 tests
+4 tests open command line go to root of folder and execute npm run test command
 ## Questions
 6bodaley6@gmail.com
   
